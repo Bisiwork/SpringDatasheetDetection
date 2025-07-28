@@ -1,0 +1,20 @@
+{
+  "$id": "wire_material.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "wire_material": {
+      "type": "string",
+      "description": "Material of the spring wire",
+      "enum": [
+        "stainless_steel",
+        "chrome_silicon_steel",
+        "music_wire_steel"
+      ]
+    }
+  },
+  "required": [
+    "wire_material"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,18 @@
+
+openai>=1.0.0
+pytesseract
+Pillow
+python-dotenv
+fastapi
+uvicorn
+pydantic
+tqdm
+aiofiles
+httpx
+loguru
+opencv-python
+pdf2image
+python-multipart
+easyocr
+paddleocr
+# paddlepaddle==2.5.0  # Non disponibile su Mac ARM, commentato per evitare errori

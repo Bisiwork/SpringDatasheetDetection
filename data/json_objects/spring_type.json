@@ -1,0 +1,21 @@
+{
+  "$id": "spring_type.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "spring_type": {
+      "type": "string",
+      "description": "Geometric family: cylindrical",
+      "enum": [
+        "cylindrical",
+        "conical",
+        "biconical",
+        "custom"
+      ]
+    }
+  },
+  "required": [
+    "spring_type"
+  ],
+  "additionalProperties": false
+}
