@@ -1,8 +1,10 @@
-__pycache__/
 .venv/
-.env
+__pycache__/
 *.pyc
-*.pyo
 *.log
-.DS_Store
-docling
+.env
+data/output/
+data/sketch/*.jpg
+data/sketch/*.png
+.ipynb_checkpoints/
+
