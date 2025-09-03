@@ -1,0 +1,16 @@
+{
+  "$id": "body_diameter_correction.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "body_diameter_correction": {
+      "type": "number",
+      "description": "Diameter correction to apply to the body in mm",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "body_diameter_correction"
+  ],
+  "additionalProperties": false
+}

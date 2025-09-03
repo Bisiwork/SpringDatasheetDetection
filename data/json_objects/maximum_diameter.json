@@ -1,0 +1,16 @@
+{
+  "$id": "maximum_diameter.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "maximum_diameter": {
+      "type": "number",
+      "description": "Maximum (wide end) diameter in mm",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "maximum_diameter"
+  ],
+  "additionalProperties": false
+}

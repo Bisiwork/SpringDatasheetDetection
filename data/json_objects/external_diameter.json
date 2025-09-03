@@ -1,0 +1,16 @@
+{
+  "$id": "external_diameter.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "external_diameter": {
+      "type": "number",
+      "description": "Constant external diameter of the spring in mm",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "external_diameter"
+  ],
+  "additionalProperties": false
+}

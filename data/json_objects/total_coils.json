@@ -1,0 +1,16 @@
+{
+  "$id": "total_coils.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "total_coils": {
+      "type": "number",
+      "description": "Total number of coils",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "total_coils"
+  ],
+  "additionalProperties": false
+}

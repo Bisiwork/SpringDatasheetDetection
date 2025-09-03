@@ -1,0 +1,16 @@
+{
+  "$id": "pitch_insertion_coils.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "pitch_insertion_coils": {
+      "type": "number",
+      "description": "Number of coils with increasing pitch (insertion)",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "pitch_insertion_coils"
+  ],
+  "additionalProperties": false
+}

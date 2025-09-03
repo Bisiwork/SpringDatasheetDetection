@@ -1,0 +1,16 @@
+{
+  "$id": "final_coils_curvature.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "final_coils_curvature": {
+      "type": "number",
+      "description": "Curvature (concave/convex) of final coils in mm",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "final_coils_curvature"
+  ],
+  "additionalProperties": false
+}

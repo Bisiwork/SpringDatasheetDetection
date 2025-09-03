@@ -1,0 +1,16 @@
+{
+  "$id": "initial_diameter.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "initial_diameter": {
+      "type": "number",
+      "description": "Diameter at the first end in mm",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "initial_diameter"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,16 @@
+{
+  "$id": "initial_coils_curvature.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "initial_coils_curvature": {
+      "type": "number",
+      "description": "Curvature (concave/convex) of initial coils in mm",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "initial_coils_curvature"
+  ],
+  "additionalProperties": false
+}

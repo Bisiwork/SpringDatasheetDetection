@@ -1,0 +1,16 @@
+{
+  "$id": "initial_closed_coils.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "initial_closed_coils": {
+      "type": "integer",
+      "description": "Number of closed coils at start",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "initial_closed_coils"
+  ],
+  "additionalProperties": false
+}

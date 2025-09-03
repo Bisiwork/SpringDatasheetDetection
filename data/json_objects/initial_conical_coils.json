@@ -1,0 +1,16 @@
+{
+  "$id": "initial_conical_coils.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "initial_conical_coils": {
+      "type": "number",
+      "description": "Number of initial conical coils",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "initial_conical_coils"
+  ],
+  "additionalProperties": false
+}

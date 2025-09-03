@@ -1,0 +1,16 @@
+{
+  "$id": "central_diameter.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "central_diameter": {
+      "type": "number",
+      "description": "Diameter at the central section in mm",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "central_diameter"
+  ],
+  "additionalProperties": false
+}

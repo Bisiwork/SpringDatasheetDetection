@@ -1,0 +1,15 @@
+{
+  "$id": "note.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "note": {
+      "type": "string",
+      "description": "Free-form notes for special geometries or parameters"
+    }
+  },
+  "required": [
+    "note"
+  ],
+  "additionalProperties": false
+}

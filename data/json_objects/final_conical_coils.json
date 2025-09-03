@@ -1,0 +1,16 @@
+{
+  "$id": "final_conical_coils.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "final_conical_coils": {
+      "type": "number",
+      "description": "Number of final conical coils",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "final_conical_coils"
+  ],
+  "additionalProperties": false
+}

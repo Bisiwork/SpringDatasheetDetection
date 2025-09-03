@@ -5,7 +5,7 @@
   "properties": {
     "spring_type": {
       "type": "string",
-      "description": "Geometric family: cylindrical",
+      "description": "Geometric family: biconical",
       "enum": [
         "cylindrical",
         "conical",

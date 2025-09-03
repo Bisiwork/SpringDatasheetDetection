@@ -1,0 +1,16 @@
+{
+  "$id": "concavity_convexity.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "concavity_convexity": {
+      "type": "number",
+      "description": "Overall concavity/convexity value in mm",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "concavity_convexity"
+  ],
+  "additionalProperties": false
+}

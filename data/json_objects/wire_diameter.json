@@ -1,0 +1,16 @@
+{
+  "$id": "wire_diameter.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "wire_diameter": {
+      "type": "number",
+      "description": "Wire diameter in mm",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "wire_diameter"
+  ],
+  "additionalProperties": false
+}

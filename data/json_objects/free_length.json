@@ -1,0 +1,16 @@
+{
+  "$id": "free_length.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "free_length": {
+      "type": "number",
+      "description": "Free length of the spring in mm (unloaded)",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "free_length"
+  ],
+  "additionalProperties": false
+}

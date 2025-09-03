@@ -1,0 +1,16 @@
+{
+  "$id": "pitch_retraction_coils.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "pitch_retraction_coils": {
+      "type": "number",
+      "description": "Number of coils with decreasing pitch (retraction)",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "pitch_retraction_coils"
+  ],
+  "additionalProperties": false
+}
