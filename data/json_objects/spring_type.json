@@ -5,7 +5,7 @@
   "properties": {
     "spring_type": {
       "type": "string",
-      "description": "Geometric family: biconical",
+      "description": "Famiglia geometrica (cilindrico, conico, biconico, personalizzato)",
       "enum": [
         "cylindrical",
         "conical",

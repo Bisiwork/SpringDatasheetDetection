@@ -5,7 +5,7 @@
   "properties": {
     "wire_diameter": {
       "type": "number",
-      "description": "Wire diameter in mm",
+      "description": "Diametro del filo impiegato in mm",
       "minimum": 0
     }
   },

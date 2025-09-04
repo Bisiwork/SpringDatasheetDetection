@@ -5,7 +5,7 @@
   "properties": {
     "final_conical_coils": {
       "type": "number",
-      "description": "Number of final conical coils",
+      "description": "Numero di spire coniche alla fine",
       "minimum": 0
     }
   },

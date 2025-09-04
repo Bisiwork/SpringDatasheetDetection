@@ -5,7 +5,7 @@
   "properties": {
     "wire_material": {
       "type": "string",
-      "description": "Material of the spring wire",
+      "description": "Materiale del filo (acciaio inox, cromo-silicio, armonico)",
       "enum": [
         "stainless_steel",
         "chrome_silicon_steel",

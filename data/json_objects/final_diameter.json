@@ -5,7 +5,7 @@
   "properties": {
     "final_diameter": {
       "type": "number",
-      "description": "Diameter at the second end in mm",
+      "description": "Diametro delle spire finali (mm)",
       "minimum": 0
     }
   },

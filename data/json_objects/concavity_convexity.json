@@ -5,7 +5,7 @@
   "properties": {
     "concavity_convexity": {
       "type": "number",
-      "description": "Overall concavity/convexity value in mm",
+      "description": "Indice di concavità/convessità complessiva (mm)",
       "minimum": 0
     }
   },

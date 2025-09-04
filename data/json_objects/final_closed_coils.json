@@ -5,7 +5,7 @@
   "properties": {
     "final_closed_coils": {
       "type": "integer",
-      "description": "Number of closed coils at end",
+      "description": "Spire chiuse alla fine",
       "minimum": 0
     }
   },

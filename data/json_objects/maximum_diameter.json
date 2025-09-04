@@ -5,7 +5,7 @@
   "properties": {
     "maximum_diameter": {
       "type": "number",
-      "description": "Maximum (wide end) diameter in mm",
+      "description": "Diametro massimo (punta larga) in mm",
       "minimum": 0
     }
   },

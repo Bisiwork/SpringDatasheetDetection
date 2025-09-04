@@ -5,7 +5,7 @@
   "properties": {
     "body_diameter_correction": {
       "type": "number",
-      "description": "Diameter correction to apply to the body in mm",
+      "description": "Correzione applicata al diametro del corpo molla (mm)",
       "minimum": 0
     }
   },

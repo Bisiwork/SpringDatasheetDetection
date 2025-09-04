@@ -5,7 +5,7 @@
   "properties": {
     "initial_closed_coils": {
       "type": "integer",
-      "description": "Number of closed coils at start",
+      "description": "Spire chiuse all'inizio",
       "minimum": 0
     }
   },

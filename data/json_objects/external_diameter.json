@@ -5,7 +5,7 @@
   "properties": {
     "external_diameter": {
       "type": "number",
-      "description": "Constant external diameter of the spring in mm",
+      "description": "Diametro esterno costante lungo tutta la molla (mm)",
       "minimum": 0
     }
   },

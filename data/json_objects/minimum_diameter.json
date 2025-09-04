@@ -5,7 +5,7 @@
   "properties": {
     "minimum_diameter": {
       "type": "number",
-      "description": "Minimum (narrow end) diameter in mm",
+      "description": "Diametro minimo (punta stretta) in mm",
       "minimum": 0
     }
   },

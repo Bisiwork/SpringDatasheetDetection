@@ -5,7 +5,7 @@
   "properties": {
     "initial_conical_coils": {
       "type": "number",
-      "description": "Number of initial conical coils",
+      "description": "Numero di spire coniche all'inizio",
       "minimum": 0
     }
   },

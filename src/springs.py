@@ -5,11 +5,19 @@ from pydantic import BaseModel, Field
 
 
 # --------------------------------------------------------------------------- #
-# SUPPORTING ENUMS
+# ENUMS DI SUPPORTO
 # --------------------------------------------------------------------------- #
 
+class SpringFunction(str, Enum):
+    """Tipo di funzionamento della molla (o classificazione fuori ambito)."""
+    COMPRESSION   = "compression"     # molla a compressione
+    TORSION       = "torsion"         # molla a torsione
+    NOT_SUPPORTED = "not_supported"   # molla non supportata
+    NOT_A_SPRING  = "not_a_spring"    # l’oggetto non è una molla
+
+
 class SpringType(str, Enum):
-    """Geometric family of the spring."""
+    """Famiglia geometrica della molla (solo per molle a compressione)."""
     CYLINDRICAL = "cylindrical"
     CONICAL = "conical"
     BICONICAL = "biconical"
@@ -17,161 +25,124 @@ class SpringType(str, Enum):
 
 
 class WireMaterial(str, Enum):
-    """Material of the spring wire."""
-    STAINLESS_STEEL = "stainless_steel"
-    CHROME_SILICON_STEEL = "chrome_silicon_steel"
-    MUSIC_WIRE_STEEL = "music_wire_steel"
+    """Materiale del filo della molla."""
+    STAINLESS_STEEL = "stainless_steel"            # acciaio inox
+    CHROME_SILICON_STEEL = "chrome_silicon_steel"  # acciaio al cromo-silicio
+    MUSIC_WIRE_STEEL = "music_wire_steel"          # acciaio armonico
+
 
 # --------------------------------------------------------------------------- #
-# COMMON BASE MODEL FOR ALL SPRINGS
+# MODELLO BASE (Metadati validi per qualsiasi molla)
 # --------------------------------------------------------------------------- #
 
 class SpringBase(BaseModel):
     """
-    Common parameters for all springs.
-    Only spring_type is required.
+    Metadati e parametri comuni.
+    NOTA: molte proprietà sono opzionali per consentire il riuso del modello
+    anche per workflow “parziali” o con estrazione progressiva.
     """
-    spring_type: SpringType = Field(..., description="Geometric family of the spring")
-    wire_material: Optional[WireMaterial] = Field(
-        None, description="Material of the spring wire"
+    spring_function: Optional[SpringFunction] = Field(
+        None,
+        description=(
+            "Tipo di funzionamento: compression | torsion | not_supported | not_a_spring"
+        ),
     )
+
+    # Metadati (validi per qualsiasi molla)
     wire_diameter: Optional[float] = Field(
-        None, description="Wire diameter in mm"
+        None, description="Diametro del filo impiegato in mm"
+    )
+    wire_material: Optional[WireMaterial] = Field(
+        None, description="Materiale del filo (acciaio inox, cromo-silicio, armonico)"
+    )
+
+    # Parametri comuni alle molle a compressione
+    spring_type: Optional[SpringType] = Field(
+        None, description="Famiglia geometrica (cilindrico, conico, biconico, personalizzato)"
     )
     free_length: Optional[float] = Field(
-        None, description="Free length of the spring in mm (unloaded)"
+        None, description="Lunghezza libera della molla non caricata in mm"
     )
     total_coils: Optional[float] = Field(
-        None, description="Total number of coils"
+        None, description="Numero complessivo di spire"
     )
     initial_closed_coils: Optional[int] = Field(
-        None, description="Number of closed coils at start"
+        None, description="Spire chiuse all'inizio"
     )
     final_closed_coils: Optional[int] = Field(
-        None, description="Number of closed coils at end"
+        None, description="Spire chiuse alla fine"
     )
     pitch_insertion_coils: Optional[float] = Field(
-        None, description="Number of coils with increasing pitch (insertion)"
+        None, description="Numero di spire a passo crescente (fase di inserzione)"
     )
     pitch_retraction_coils: Optional[float] = Field(
-        None, description="Number of coils with decreasing pitch (retraction)"
+        None, description="Numero di spire a passo decrescente (fase di retrazione)"
     )
 
 
 # --------------------------------------------------------------------------- #
-# SUBCLASSES FOR SPECIFIC GEOMETRIES
+# SOTTOCLASSI PER GEOMETRIE SPECIFICHE (molle a compressione)
 # --------------------------------------------------------------------------- #
 
 class CylindricalSpring(SpringBase):
-    """Cylindrical spring with constant diameter."""
+    """Molla cilindrica a diametro costante."""
     spring_type: Literal[SpringType.CYLINDRICAL] = Field(
-        SpringType.CYLINDRICAL, description="Geometric family: cylindrical"
+        SpringType.CYLINDRICAL, description="Famiglia geometrica: cilindrico"
     )
     external_diameter: Optional[float] = Field(
-        None, description="Constant external diameter of the spring in mm"
+        None, description="Diametro esterno costante lungo tutta la molla (mm)"
     )
     body_diameter_correction: Optional[float] = Field(
-        None, description="Diameter correction to apply to the body in mm"
+        None, description="Correzione applicata al diametro del corpo molla (mm)"
     )
 
 
 class ConicalSpring(SpringBase):
-    """Conical (tapered) spring with variable diameter."""
+    """Molla conica (tapered) a diametro variabile."""
     spring_type: Literal[SpringType.CONICAL] = Field(
-        SpringType.CONICAL, description="Geometric family: conical"
+        SpringType.CONICAL, description="Famiglia geometrica: conico"
     )
     minimum_diameter: Optional[float] = Field(
-        None, description="Minimum (narrow end) diameter in mm"
+        None, description="Diametro minimo (punta stretta) in mm"
     )
     maximum_diameter: Optional[float] = Field(
-        None, description="Maximum (wide end) diameter in mm"
+        None, description="Diametro massimo (punta larga) in mm"
     )
     concavity_convexity: Optional[float] = Field(
-        None, description="Overall concavity/convexity value in mm"
+        None, description="Indice di concavità/convessità complessiva (mm)"
     )
 
 
 class BiconicalSpring(SpringBase):
-    """Biconical (hourglass) spring."""
+    """Molla biconica (a clessidra)."""
     spring_type: Literal[SpringType.BICONICAL] = Field(
-        SpringType.BICONICAL, description="Geometric family: biconical"
+        SpringType.BICONICAL, description="Famiglia geometrica: biconico"
     )
     initial_diameter: Optional[float] = Field(
-        None, description="Diameter at the first end in mm"
+        None, description="Diametro delle prime spire (mm)"
     )
     central_diameter: Optional[float] = Field(
-        None, description="Diameter at the central section in mm"
+        None, description="Diametro nella zona centrale (min/max) in mm"
     )
     final_diameter: Optional[float] = Field(
-        None, description="Diameter at the second end in mm"
+        None, description="Diametro delle spire finali (mm)"
     )
     initial_conical_coils: Optional[float] = Field(
-        None, description="Number of initial conical coils"
+        None, description="Numero di spire coniche all'inizio"
     )
     final_conical_coils: Optional[float] = Field(
-        None, description="Number of final conical coils"
+        None, description="Numero di spire coniche alla fine"
     )
     initial_coils_curvature: Optional[float] = Field(
-        None, description="Curvature (concave/convex) of initial coils in mm"
+        None, description="Curvatura concava/convessa delle prime spire (mm)"
     )
     final_coils_curvature: Optional[float] = Field(
-        None, description="Curvature (concave/convex) of final coils in mm"
+        None, description="Curvatura concava/convessa delle spire finali (mm)"
     )
 
 
 class CustomSpring(SpringBase):
-    """Spring with non-standard parameters (special geometry)."""
+    """Molla con parametri non standard (geometria speciale)."""
     spring_type: Literal[SpringType.CUSTOM] = Field(
-        SpringType.CUSTOM, description="Geometric family: custom"
-    )
-    note: Optional[str] = Field(
-        None, description="Free-form notes for special geometries or parameters"
-    )
-
-
-# --------------------------------------------------------------------------- #
-# MACHINE PROGRAM ROW MODEL
-# --------------------------------------------------------------------------- #
-
-class SpringProgramRow(BaseModel):
-    """
-    Instruction row for CNC/winding machine: describes the movement
-    needed to form the spring step-by-step.
-    All fields are optional.
-    """
-    step: Optional[int] = Field(
-        None, description="Step index (starting from 1)"
-    )
-    feed: Optional[float] = Field(
-        None, description="Feed increment in coils"
-    )
-    feed_abs: Optional[float] = Field(
-        None, description="Cumulative feed in coils"
-    )
-    diameter: Optional[float] = Field(
-        None, description="Wire diameter at current step in mm"
-    )
-    rotation: Optional[float] = Field(
-        None, description="Tool or wire rotation in degrees"
-    )
-    v_pitch: Optional[float] = Field(
-        None, description="Vertical pitch in mm"
-    )
-    h_pitch: Optional[float] = Field(
-        None, description="Horizontal pitch in mm"
-    )
-    mand_y: Optional[float] = Field(
-        None, description="Y-axis carriage movement in mm"
-    )
-    mand_z: Optional[float] = Field(
-        None, description="Z-axis carriage movement in mm"
-    )
-    funct: Optional[int] = Field(
-        None, description="Machine function code executed at this step"
-    )
-    param: Optional[int] = Field(
-        None, description="Optional parameter for the machine function"
-    )
-    speed: Optional[int] = Field(
-        None, description="Machine speed percentage"
+        SpringType.CUSTOM, description="Famiglia geometrica: personalizzato"
     )

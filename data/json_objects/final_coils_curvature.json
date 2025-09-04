@@ -5,7 +5,7 @@
   "properties": {
     "final_coils_curvature": {
       "type": "number",
-      "description": "Curvature (concave/convex) of final coils in mm",
+      "description": "Curvatura concava/convessa delle spire finali (mm)",
       "minimum": 0
     }
   },

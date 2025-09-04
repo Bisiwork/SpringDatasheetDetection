@@ -5,7 +5,7 @@
   "properties": {
     "initial_diameter": {
       "type": "number",
-      "description": "Diameter at the first end in mm",
+      "description": "Diametro delle prime spire (mm)",
       "minimum": 0
     }
   },

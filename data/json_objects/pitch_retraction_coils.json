@@ -5,7 +5,7 @@
   "properties": {
     "pitch_retraction_coils": {
       "type": "number",
-      "description": "Number of coils with decreasing pitch (retraction)",
+      "description": "Numero di spire a passo decrescente (fase di retrazione)",
       "minimum": 0
     }
   },

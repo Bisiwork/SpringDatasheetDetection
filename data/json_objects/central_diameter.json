@@ -5,7 +5,7 @@
   "properties": {
     "central_diameter": {
       "type": "number",
-      "description": "Diameter at the central section in mm",
+      "description": "Diametro nella zona centrale (min/max) in mm",
       "minimum": 0
     }
   },

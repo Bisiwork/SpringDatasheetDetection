@@ -5,7 +5,7 @@
   "properties": {
     "initial_coils_curvature": {
       "type": "number",
-      "description": "Curvature (concave/convex) of initial coils in mm",
+      "description": "Curvatura concava/convessa delle prime spire (mm)",
       "minimum": 0
     }
   },

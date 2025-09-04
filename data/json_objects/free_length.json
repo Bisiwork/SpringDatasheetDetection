@@ -5,7 +5,7 @@
   "properties": {
     "free_length": {
       "type": "number",
-      "description": "Free length of the spring in mm (unloaded)",
+      "description": "Lunghezza libera della molla non caricata in mm",
       "minimum": 0
     }
   },

@@ -5,7 +5,7 @@
   "properties": {
     "total_coils": {
       "type": "number",
-      "description": "Total number of coils",
+      "description": "Numero complessivo di spire",
       "minimum": 0
     }
   },

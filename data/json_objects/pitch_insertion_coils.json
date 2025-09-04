@@ -5,7 +5,7 @@
   "properties": {
     "pitch_insertion_coils": {
       "type": "number",
-      "description": "Number of coils with increasing pitch (insertion)",
+      "description": "Numero di spire a passo crescente (fase di inserzione)",
       "minimum": 0
     }
   },

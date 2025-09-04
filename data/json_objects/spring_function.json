@@ -1,0 +1,15 @@
+{
+  "$id": "spring_function.json#",
+  "type": "object",
+  "$ref": "springsBaseFields.json#",
+  "properties": {
+    "spring_function": {
+      "type": "string",
+      "description": "Tipo di funzionamento della molla (compressione, torsione)"
+    }
+  },
+  "required": [
+    "spring_function"
+  ],
+  "additionalProperties": false
+}
