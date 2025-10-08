@@ -17,3 +17,6 @@ easyocr
 paddlepaddle==3.1.1
 paddleocr==3.2.0
 Pillow
+pandas
+openpyxl
+matplotlib

@@ -9,3 +9,8 @@ docling
 docs
 utils
 backup
+reports/
+results/
+*.thumb.png
+.github
+.vscode

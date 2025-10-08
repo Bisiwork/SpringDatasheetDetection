@@ -5,7 +5,13 @@
   "properties": {
     "spring_function": {
       "type": "string",
-      "description": "Tipo di funzionamento della molla (compressione, torsione)"
+      "description": "Tipo di funzionamento: compression | torsion | not_supported | not_a_spring",
+      "enum": [
+        "compression",
+        "torsion",
+        "not_supported",
+        "not_a_spring"
+      ]
     }
   },
   "required": [

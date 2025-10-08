@@ -1,9 +1,0 @@
-stage,in_tok,out_tok,USD,EUR
-spring_and_material,815,614,0.0133,0.0122
-wire_diameter,711,1491,0.0259,0.0238
-free_length,721,594,0.0125,0.0115
-total_coils,711,1170,0.0211,0.0194
-closed_coils,754,927,0.0177,0.0163
-pitch_coils,773,1890,0.0322,0.0296
-cylindrical_specifics,765,1824,0.0312,0.0287
-TOTAL,,,,0.1415

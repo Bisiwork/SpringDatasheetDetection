@@ -1,0 +1,2 @@
+- [x] Modify build_parser to make subparsers not required
+- [x] In main function, add logic to default to 'pipeline' command with default args when no command is provided
