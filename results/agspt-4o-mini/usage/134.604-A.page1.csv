@@ -1,0 +1,5 @@
+stage,in_tok,out_tok,USD,EUR,secs
+spring_function+wire_material,37034,16,0.0056,0.0051,3.353
+wire_diameter,36935,10,0.0055,0.0051,2.281
+TOTAL,,,,0.0102,5.634
+WALL,,,,,5.646

@@ -13,6 +13,8 @@ import hashlib
 import json
 import os
 import sys
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from time import perf_counter
 from typing import Any, Dict, List, Sequence, Type
@@ -88,7 +90,6 @@ def setup_environment():
 
 def prepare_directories():
     SCHEMA_DIR.mkdir(parents=True, exist_ok=True)
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     USAGE_DIR.mkdir(parents=True, exist_ok=True)
 
 def ensure_json_schemas_exist():
@@ -118,7 +119,7 @@ def ensure_json_schemas_exist():
 
 
 def _collect_input_files(directory: Path) -> List[Path]:
-    """Ritorna i file di input validi (immagini/PDF) ordinati alfabeticamente."""
+    """Ritorna i file di input validi (immagini/PDF) ordinati alfabeticamente, uno per stem (preferisci jpg su pdf)."""
     try:
         files = [
             p
@@ -127,7 +128,54 @@ def _collect_input_files(directory: Path) -> List[Path]:
         ]
     except FileNotFoundError:
         sys.exit(f"Input directory non trovata: {directory}")
-    return sorted(files, key=lambda p: p.name)
+    # Raggruppa per stem
+    from collections import defaultdict
+    grouped = defaultdict(list)
+    for p in files:
+        grouped[p.stem].append(p)
+    # Per ogni gruppo, preferisci jpg, altrimenti pdf
+    selected = []
+    for stem, paths in grouped.items():
+        jpgs = [p for p in paths if p.suffix.lower() in IMG_EXTS]
+        pdfs = [p for p in paths if p.suffix.lower() in PDF_EXTS]
+        if jpgs:
+            selected.append(jpgs[0])
+        elif pdfs:
+            selected.append(pdfs[0])
+    return sorted(selected, key=lambda p: p.name)
+
+# ────────────────────────────── TRACING ──────────────────────────── #
+class Tracer:
+    def __init__(self):
+        self.trail = []
+        self.now = lambda: __import__('datetime').datetime.now().isoformat()
+
+    def start(self, label, meta=None):
+        t0 = __import__('time').perf_counter()
+        self.trail.append({"label": label, "at": self.now(), "status": "start", "meta": meta or {}})
+        return TracerStep(self, label, t0)
+
+class TracerStep:
+    def __init__(self, tracer, label, t0):
+        self.tracer = tracer
+        self.label = label
+        self.t0 = t0
+
+    def log(self, data):
+        self.tracer.trail.append({"label": self.label, "at": self.tracer.now(), "status": "log", "data": data})
+
+    def ok(self, data=None):
+        secs = round((__import__('time').perf_counter() - self.t0), 3)
+        self.tracer.trail.append({"label": self.label, "at": self.tracer.now(), "status": "ok", "secs": secs, "data": data or {}})
+
+    def fail(self, err):
+        secs = round((__import__('time').perf_counter() - self.t0), 3)
+        error = {
+            "name": getattr(err, 'name', type(err).__name__),
+            "message": str(getattr(err, 'message', err)),
+            "stack": str(getattr(err, 'stack', '')).split('\n')[:4]
+        }
+        self.tracer.trail.append({"label": self.label, "at": self.tracer.now(), "status": "fail", "secs": secs, "error": error})
 
 # ────────────────────────────── SCHEMAS / ENCODING ───────────────── #
 def _sanitize(schema: Dict[str, Any]) -> Dict[str, Any]:
@@ -136,6 +184,12 @@ def _sanitize(schema: Dict[str, Any]) -> Dict[str, Any]:
     out.pop("$ref", None)
     if "required" in out:
         out["required"] = list(dict.fromkeys(out["required"]))
+    # Add nullable for optional fields like JS
+    nullable_fields = {"wire_material", "wire_diameter", "spring_type"}
+    if "properties" in out:
+        for field in nullable_fields:
+            if field in out["properties"]:
+                out["properties"][field]["nullable"] = True
     return out
 
 def load_schema(*fields: str) -> Dict[str, Any]:
@@ -250,14 +304,26 @@ def ask(
         print(json.dumps(data, indent=2, ensure_ascii=False), "\n")
     return data
 
+# ────────────────────────────── UTILS ──────────────────────────── #
+def normalize_spring_function(func: str) -> str:
+    """Normalize spring_function like JS."""
+    if not func:
+        return "not_a_spring"
+    lower = func.lower().strip()
+    if lower in ("compression", "torsion"):
+        return lower
+    if lower == "not_supported":
+        return "other"
+    if lower == "not_a_spring":
+        return lower
+    return "not_a_spring"
+
 # ────────────────────────────── PROMPTS ──────────────────────────── #
-def prompt_function_and_material(img: Dict[str, Any], acc: List[Dict[str, Any]]) -> Dict[str, Any]:
+def prompt_meta(img: Dict[str, Any], acc: List[Dict[str, Any]]) -> Dict[str, Any]:
     """
-    Estrae solo metadati comuni a TUTTE le molle:
-    - spring_function (compression|torsion)
-    - wire_material
+    Combined meta extraction: spring_function, wire_material, wire_diameter, spring_type
     """
-    schema = load_schema("spring_function", "wire_material")
+    schema = load_schema("spring_function", "wire_material", "wire_diameter", "spring_type")
     sys_msg = "Sei un ingegnere Simplex Rapid. Analizza immagine, eventuali tabelle e note."
     return ask(
         messages=[
@@ -265,16 +331,18 @@ def prompt_function_and_material(img: Dict[str, Any], acc: List[Dict[str, Any]])
             {"role": "user", "content": [
                 {"type": "input_text", "text":
                     "Rileva i seguenti campi e restituisci SOLO il JSON:\n"
-                    "• spring_function (enum: compression | torsion)\n"
-                    "• wire_material (enum: stainless_steel | chrome_silicon_steel | music_wire_steel)"
+                    "• spring_function (enum: compression | torsion | other | not_a_spring)\n"
+                    "• wire_material (enum: stainless_steel | chrome_silicon_steel | music_wire_steel)\n"
+                    "• wire_diameter (numero, mm)\n"
+                    "• spring_type (enum: cylindrical | conical | biconical | custom)"
                 },
                 img
             ]}
         ],
         schema=schema,
-        schema_name=short_schema_name("function_and_material", ["spring_function", "wire_material"]),
+        schema_name=short_schema_name("meta", ["spring_function", "wire_material", "wire_diameter", "spring_type"]),
         acc=acc,
-        stage_label="spring_function+wire_material",
+        stage_label="meta",
     )
 
 def prompt_spring_type(img: Dict[str, Any], acc: List[Dict[str, Any]]) -> Dict[str, Any]:
@@ -357,45 +425,72 @@ MODEL_MAP = {
 }
 
 # ────────────────────────────── PIPELINE ─────────────────────────── #
-def extract_spring_data(img: Dict[str, Any], path: Path, acc: List[Dict[str, Any]]) -> Dict[str, Any]:
+def extract_spring_data(img: Dict[str, Any], path: Path, acc: List[Dict[str, Any]], tracer: Tracer) -> Dict[str, Any]:
+    step = tracer.start("extract_spring_data", {"path": str(path)})
     data: Dict[str, Any] = {}
 
-    # 0) Funzione + materiale (valido per tutte le molle)
-    meta = prompt_function_and_material(img, acc)
-    data.update(meta)  # spring_function, wire_material
-
-    # 0.1) Metadato: wire_diameter (lo chiediamo sempre)
-    data.update(prompt_params(META_SINGLE, img, SpringBase, acc))
-
-    # Se NON è compressione → STOP qui (evitiamo di interrogare campi “a compressione”)
-    if (data.get("spring_function") or "").lower() != "compression":
-        return data
-
-    # 1) Tipo geometrico (solo compressione)
-    st_info = prompt_spring_type(img, acc)
-    raw_type = st_info["spring_type"].lower()
     try:
-        st_enum = SpringType(raw_type)
-    except ValueError:
-        raise ValueError(f"spring_type «{raw_type}» non valido")
-    data["spring_type"] = st_enum.value
+        # 0) Combined meta: spring_function, wire_material, wire_diameter, spring_type
+        meta = prompt_meta(img, acc)
+        data.update(meta)
+        step.log({"meta": meta})
 
-    model_cls = MODEL_MAP[st_enum]
+        # Normalize spring_function
+        data["spring_function"] = normalize_spring_function(data.get("spring_function", ""))
 
-    # 2) Parametri comuni (compressione)
-    for f in COMMON_SINGLE:
-        data.update(prompt_params([f], img, model_cls, acc))
-    for duo in COMMON_COUPLES:
-        data.update(prompt_params(duo, img, model_cls, acc))
+        # If not compression, stop
+        if data["spring_function"] != "compression":
+            step.ok({"reason": "not_compression", "function": data["spring_function"]})
+            return data
 
-    # 3) Specifici per geometria (compressione)
-    if SPEC_FIELDS.get(st_enum):
-        data.update(prompt_params(SPEC_FIELDS[st_enum], img, model_cls, acc))
+        # If spring_type not provided or null, call separate prompt
+        if not data.get("spring_type"):
+            st_info = prompt_spring_type(img, acc)
+            data["spring_type"] = st_info["spring_type"]
+            step.log({"spring_type_from_separate": st_info})
 
-    return data
+        raw_type = data["spring_type"].lower()
+        try:
+            st_enum = SpringType(raw_type)
+        except ValueError:
+            raise ValueError(f"spring_type «{raw_type}» non valido")
+        data["spring_type"] = st_enum.value
 
-def save_output(data: Dict[str, Any], path: Path):
+        model_cls = MODEL_MAP[st_enum]
+
+        # Common params
+        for f in COMMON_SINGLE:
+            data.update(prompt_params([f], img, model_cls, acc))
+        for duo in COMMON_COUPLES:
+            data.update(prompt_params(duo, img, model_cls, acc))
+
+        # Specific params
+        if SPEC_FIELDS.get(st_enum):
+            data.update(prompt_params(SPEC_FIELDS[st_enum], img, model_cls, acc))
+
+        step.ok({"data": data})
+        return data
+    except Exception as e:
+        step.fail(e)
+        raise
+
+def save_output(data: Dict[str, Any], path: Path, tracer: Tracer, acc: List[Dict[str, Any]]):
+    data["debugTrail"] = tracer.trail
+    # Add merged usage
+    total_in = sum(r["in_tokens"] for r in acc)
+    total_out = sum(r["out_tokens"] for r in acc)
+    total_usd = sum(r["usd"] for r in acc)
+    total_eur = sum(r["eur"] for r in acc)
+    total_secs = sum(r["secs"] for r in acc)
+    data["usage"] = {
+        "in_tokens": total_in,
+        "out_tokens": total_out,
+        "usd": round(total_usd, 4),
+        "eur": round(total_eur, 4),
+        "secs": round(total_secs, 3),
+    }
     out = OUTPUT_DIR / f"{path.stem}.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(data, indent=2, ensure_ascii=False))
     try:
         rel = out.relative_to(Path.cwd())
@@ -419,21 +514,21 @@ def log_usage(acc: List[Dict[str, Any]], path: Path, wall_secs: float):
     print(f"🕒  Tempi {path.stem}: API {round(total_secs,2)} s  |  Wall {round(wall_secs,2)} s")
 
 def process_input(path: Path):
-    out = OUTPUT_DIR / f"{path.stem}.json"
-    if out.exists() and not FORCE_REGEN:
+    if OUTPUT_DIR.exists() and not FORCE_REGEN:
         print(f"⏭️  Skipping {path.name}: output already exists.")
         return
     acc: List[Dict[str, Any]] = []
-    print(f"\n🔄  {path.name}")
+    tracer = Tracer()
+    print(f"\n🔄  [{MODEL}] {path.name}")
     wall_t0 = perf_counter()
     file_arg = encode_input(path)
     try:
-        data = extract_spring_data(file_arg, path, acc)
-        save_output(data, path)
+        data = extract_spring_data(file_arg, path, acc, tracer)
+        save_output(data, path, tracer, acc)
         wall_dt = perf_counter() - wall_t0
         log_usage(acc, path, wall_dt)
     except Exception as e:
-        print(f"❌  {path.name}: {e}", file=sys.stderr)
+        print(f"❌  [{MODEL}] {path.name}: {e}", file=sys.stderr)
 
 def run_batch_processing(files: Sequence[Path] | None = None):
     if files is None:
@@ -503,10 +598,9 @@ def run_for_model(
 
 
 def main() -> None:
-    setup_environment()
-    prepare_directories()
-    ensure_json_schemas_exist()
-    run_batch_processing()
+    models = ["gpt-4o", "gpt-5-nano", "gpt-5-mini", "gpt-5", "gpt-4o-mini"]
+    for model in models:
+        run_for_model(model)
 
 if __name__ == "__main__":
     main()

@@ -11,10 +11,10 @@ from src.build_labeling_excel import build_labeling_workbook
 from src.extract_predictions import run_for_model
 
 MODELS = [
-    # "gpt-4o-mini",
-    # "gpt-4o",
-    # "gpt-5-nano",
-    # "gpt-5-mini",
+    "gpt-4o-mini",
+    "gpt-4o",
+    "gpt-5-nano",
+    "gpt-5-mini",
     "gpt-5",
 
 ]

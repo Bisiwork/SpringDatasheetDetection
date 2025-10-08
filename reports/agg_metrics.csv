@@ -1,0 +1,6 @@
+model,files,fields_total,fields_correct,accuracy,cost_usd
+gpt-4o,3,0,0,0.0,0.0677
+gpt-4o-mini,3,0,0,0.0,0.0865
+gpt-5,3,0,0,0.0,0.286
+gpt-5-mini,3,0,0,0.0,0.0307
+gpt-5-nano,3,0,0,0.0,0.0143

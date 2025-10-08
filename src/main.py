@@ -17,10 +17,10 @@ from src.extract_predictions import resolve_pricing_csv, run_for_model
 from src.pricing import Pricing
 
 DEFAULT_MODELS: Sequence[str] = (
-    # "gpt-4o-mini",
-    # "gpt-4o",
-    # # "gpt-5-nano",
-    # "gpt-5-mini",
+    "gpt-4o-mini",
+    "gpt-4o",
+    "gpt-5-nano",
+    "gpt-5-mini",
     "gpt-5",
 )
 DEFAULT_CATEGORY = "Text tokens - Standard"
@@ -95,7 +95,7 @@ def generate_labeling_workbook(
             except ValueError:
                 continue
         next_id = max_id + 1
-        workbook_path = DEFAULT_WORKBOOK_PATH.format(id=next_id, model=model)
+        workbook_path = Path(DEFAULT_WORKBOOK_PATH.format(id=next_id, model=model))
     else:
         workbook_path = Path(workbook_path)
 

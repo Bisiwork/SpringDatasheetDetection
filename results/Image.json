@@ -1,0 +1,46 @@
+{
+  "spring_function": "torsion",
+  "wire_material": "music_wire_steel",
+  "wire_diameter": 1.2,
+  "spring_type": "custom",
+  "debugTrail": [
+    {
+      "label": "extract_spring_data",
+      "at": "2025-10-08T15:23:38.840188",
+      "status": "start",
+      "meta": {
+        "path": "data\\sketch\\Image.jpg"
+      }
+    },
+    {
+      "label": "extract_spring_data",
+      "at": "2025-10-08T15:23:54.251211",
+      "status": "log",
+      "data": {
+        "meta": {
+          "spring_function": "torsion",
+          "wire_material": "music_wire_steel",
+          "wire_diameter": 1.2,
+          "spring_type": "custom"
+        }
+      }
+    },
+    {
+      "label": "extract_spring_data",
+      "at": "2025-10-08T15:23:54.251264",
+      "status": "ok",
+      "secs": 15.411,
+      "data": {
+        "reason": "not_compression",
+        "function": "torsion"
+      }
+    }
+  ],
+  "usage": {
+    "in_tokens": 1072,
+    "out_tokens": 29,
+    "usd": 0.003,
+    "eur": 0.0027,
+    "secs": 15.406
+  }
+}

@@ -1,0 +1,11 @@
+stage,in_tok,out_tok,USD,EUR,secs
+spring_function+wire_material,2443,738,0.0004,0.0004,6.034
+wire_diameter,2344,916,0.0005,0.0004,10.935
+spring_type,2375,595,0.0004,0.0003,5.198
+free_length,2346,1234,0.0006,0.0006,10.638
+total_coils,2338,1619,0.0008,0.0007,11.116
+initial_closed_coils+final_closed_coils,2376,1759,0.0008,0.0008,15.282
+pitch_insertion_coils+pitch_retraction_coils,2411,2402,0.0011,0.001,16.803
+external_diameter+body_diameter_correction,2411,871,0.0005,0.0004,5.536
+TOTAL,,,,0.0046,81.542
+WALL,,,,,81.576

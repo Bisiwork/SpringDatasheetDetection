@@ -1,0 +1,46 @@
+{
+  "spring_function": "torsion",
+  "wire_material": "stainless_steel",
+  "wire_diameter": 1.5,
+  "spring_type": "cylindrical",
+  "debugTrail": [
+    {
+      "label": "extract_spring_data",
+      "at": "2025-10-08T15:23:32.499443",
+      "status": "start",
+      "meta": {
+        "path": "data\\sketch\\Image-2.jpg"
+      }
+    },
+    {
+      "label": "extract_spring_data",
+      "at": "2025-10-08T15:23:38.806971",
+      "status": "log",
+      "data": {
+        "meta": {
+          "spring_function": "torsion",
+          "wire_material": "stainless_steel",
+          "wire_diameter": 1.5,
+          "spring_type": "cylindrical"
+        }
+      }
+    },
+    {
+      "label": "extract_spring_data",
+      "at": "2025-10-08T15:23:38.806984",
+      "status": "ok",
+      "secs": 6.307,
+      "data": {
+        "reason": "not_compression",
+        "function": "torsion"
+      }
+    }
+  ],
+  "usage": {
+    "in_tokens": 1072,
+    "out_tokens": 32,
+    "usd": 0.003,
+    "eur": 0.0028,
+    "secs": 6.304
+  }
+}
