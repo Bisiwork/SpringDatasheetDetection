@@ -5,7 +5,7 @@
   "properties": {
     "concavity_convexity": {
       "type": "number",
-      "description": "Indice di concavità/convessità complessiva (mm)",
+      "description": "Indice di concavità/convessità complessiva del profilo conico (mm):\n - **> 0**: profilo **convesso** (apertura più rapida del previsto lineare)\n - **< 0**: profilo **concavo** (apertura più lenta)\n - **0**: variaz. diametro lineare. Lascia null se non applicabile.",
       "minimum": 0
     }
   },

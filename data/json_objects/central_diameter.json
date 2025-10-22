@@ -5,7 +5,7 @@
   "properties": {
     "central_diameter": {
       "type": "number",
-      "description": "Diametro nella zona centrale (min/max) in mm",
+      "description": "Diametro **centrale** (zona di minima sezione) in mm; simboli: Dc, Dmin_central.\nÈ la ‘strozzatura’ tipica del profilo biconico.",
       "minimum": 0
     }
   },

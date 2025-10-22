@@ -5,7 +5,7 @@
   "properties": {
     "initial_coils_curvature": {
       "type": "number",
-      "description": "Curvatura concava/convessa delle prime spire (mm)",
+      "description": "Curvatura locale (mm) delle prime spire rispetto a un profilo lineare equivalente:\n **> 0** convesso (diametro cresce più del lineare), **< 0** concavo.",
       "minimum": 0
     }
   },

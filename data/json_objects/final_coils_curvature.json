@@ -5,7 +5,7 @@
   "properties": {
     "final_coils_curvature": {
       "type": "number",
-      "description": "Curvatura concava/convessa delle spire finali (mm)",
+      "description": "Curvatura locale (mm) delle spire finali rispetto a un profilo lineare equivalente:\n **> 0** convesso, **< 0** concavo. Lascia null se non deducibile.",
       "minimum": 0
     }
   },

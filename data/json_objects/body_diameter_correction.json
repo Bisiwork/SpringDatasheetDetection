@@ -5,7 +5,7 @@
   "properties": {
     "body_diameter_correction": {
       "type": "number",
-      "description": "Correzione applicata al diametro del corpo molla (mm)",
+      "description": "Correzione **ΔD** applicata al diametro corpo per compensazioni di processo (es. rilassamento, grinding). Positiva se il corpo risultante è più grande, negativa se più piccolo. Lascia 0/null se non specificato.",
       "minimum": 0
     }
   },

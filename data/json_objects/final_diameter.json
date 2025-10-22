@@ -5,7 +5,7 @@
   "properties": {
     "final_diameter": {
       "type": "number",
-      "description": "Diametro delle spire finali (mm)",
+      "description": "Diametro all’estremità **finale** (lato B) in mm; simboli: D2/De_out.\nSpecifica il diametro del corpo in prossimità della fine, non di sedi o flange.",
       "minimum": 0
     }
   },

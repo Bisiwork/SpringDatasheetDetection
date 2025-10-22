@@ -5,7 +5,7 @@
   "properties": {
     "initial_diameter": {
       "type": "number",
-      "description": "Diametro delle prime spire (mm)",
+      "description": "Diametro all’estremità **iniziale** (lato A) in mm; simboli comuni: D1/De_in.\nUsa il diametro del corpo molla in prossimità dell’inizio, non eventuali sedi/accessori.",
       "minimum": 0
     }
   },

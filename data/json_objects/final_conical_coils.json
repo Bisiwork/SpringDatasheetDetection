@@ -5,7 +5,7 @@
   "properties": {
     "final_conical_coils": {
       "type": "number",
-      "description": "Numero di spire coniche alla fine",
+      "description": "Numero (anche frazionario) di spire coniche **verso la fine**. Se profilo simmetrico, i valori iniziale/finale tendono a coincidere.",
       "minimum": 0
     }
   },

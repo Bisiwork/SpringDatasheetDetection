@@ -5,7 +5,7 @@
   "properties": {
     "free_length": {
       "type": "number",
-      "description": "Lunghezza libera della molla non caricata in mm",
+      "description": "Lunghezza **L0** a molla non caricata, misurata lungo l’asse.\nEscludere eventuali elementi di estremità non elicoidali (ganci, staffe).",
       "minimum": 0
     }
   },

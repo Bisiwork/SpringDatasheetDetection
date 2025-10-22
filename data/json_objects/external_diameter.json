@@ -5,7 +5,7 @@
   "properties": {
     "external_diameter": {
       "type": "number",
-      "description": "Diametro esterno costante lungo tutta la molla (mm)",
+      "description": "Diametro **De/Do** esterno nominale (mm) del corpo molla. Se in tabella compaiono **De** e **Di**, usa **De**. Non includere eventuali allargamenti localizzati per lavorazioni di estremità.",
       "minimum": 0
     }
   },

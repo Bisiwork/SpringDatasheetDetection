@@ -5,7 +5,7 @@
   "properties": {
     "initial_conical_coils": {
       "type": "number",
-      "description": "Numero di spire coniche all'inizio",
+      "description": "Numero (anche frazionario) di spire coniche **verso l’inizio**. Riconosci la conicità locale da variazioni di De per spira.",
       "minimum": 0
     }
   },

@@ -5,7 +5,7 @@
   "properties": {
     "minimum_diameter": {
       "type": "number",
-      "description": "Diametro minimo (punta stretta) in mm",
+      "description": "Diametro **minimo** (punta stretta) in mm. Cerca ‘Dmin’, ‘small end OD’. Se presenti quote con tolleranza, prendi il **nominale**.",
       "minimum": 0
     }
   },

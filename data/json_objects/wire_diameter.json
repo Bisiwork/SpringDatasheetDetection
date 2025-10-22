@@ -5,7 +5,7 @@
   "properties": {
     "wire_diameter": {
       "type": "number",
-      "description": "Diametro del filo impiegato in mm",
+      "description": "Diametro del filo **d** in mm. Dove cercare: simbolo ‘d’, ‘wire Ø’, ‘⌀wire’ in tabella.\nSe non riportato, stimare come (De − Di)/2 quando De/Di sono chiaramente definiti.\nNon confondere con **diametro del corpo**. Arrotonda a 0.01 mm.",
       "minimum": 0
     }
   },

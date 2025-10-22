@@ -5,7 +5,7 @@
   "properties": {
     "spring_function": {
       "type": "string",
-      "description": "Tipo di funzionamento: compression | torsion | not_supported | not_a_spring",
+      "description": "Funzione della molla dedotta da: titolo/tabella/testo e caratteristiche visive.\n- compression: elicoidale senza bracci; presenza di L0, De/Di, passi/‘closed & ground’.\n- torsion: elicoidale con **due bracci**; quote angolari e lunghezze bracci.\n- not_supported: molla non tra i tipi gestiti (es. trazione/garter) → NON proseguire con campi ‘compression’.\n- not_a_spring: il file non raffigura una molla.",
       "enum": [
         "compression",
         "torsion",

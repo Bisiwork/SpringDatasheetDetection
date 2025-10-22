@@ -1,0 +1,46 @@
+{
+  "spring_function": "other",
+  "wire_material": "stainless_steel",
+  "wire_diameter": 0.5,
+  "spring_type": "custom",
+  "debugTrail": [
+    {
+      "label": "extract_spring_data",
+      "at": "2025-10-21T19:59:15.083277",
+      "status": "start",
+      "meta": {
+        "path": "data/sketch/Image-2.jpg"
+      }
+    },
+    {
+      "label": "extract_spring_data",
+      "at": "2025-10-21T19:59:33.449634",
+      "status": "log",
+      "data": {
+        "meta": {
+          "spring_function": "not_supported",
+          "wire_material": "stainless_steel",
+          "wire_diameter": 0.5,
+          "spring_type": "custom"
+        }
+      }
+    },
+    {
+      "label": "extract_spring_data",
+      "at": "2025-10-21T19:59:33.449675",
+      "status": "ok",
+      "secs": 18.367,
+      "data": {
+        "reason": "not_compression",
+        "function": "other"
+      }
+    }
+  ],
+  "usage": {
+    "in_tokens": 26161,
+    "out_tokens": 31,
+    "usd": 0.0039,
+    "eur": 0.0036,
+    "secs": 18.363
+  }
+}

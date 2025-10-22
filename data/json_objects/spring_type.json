@@ -5,7 +5,7 @@
   "properties": {
     "spring_type": {
       "type": "string",
-      "description": "Famiglia geometrica (cilindrico, conico, biconico, personalizzato)",
+      "description": "Famiglia geometrica (solo se spring_function = compression):\n - cylindrical: De ~ costante lungo l’asse (variazioni ≤ 2–3%).\n - conical: De varia **monotonicamente** (cono o tronco di cono).\n - biconical: restringimento centrale (clessidra) con De_min al centro.\n - custom: profilo non riconducibile ai casi sopra (tabella con quote atipiche).",
       "enum": [
         "cylindrical",
         "conical",

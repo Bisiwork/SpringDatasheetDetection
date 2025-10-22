@@ -5,7 +5,7 @@
   "properties": {
     "pitch_insertion_coils": {
       "type": "number",
-      "description": "Numero di spire a passo crescente (fase di inserzione)",
+      "description": "Numero di spire con **passo crescente** (zona di inserzione). Identifica porzioni dove la distanza tra spire aumenta progressivamente; accetta frazioni.",
       "minimum": 0
     }
   },

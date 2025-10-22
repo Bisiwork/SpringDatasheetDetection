@@ -5,7 +5,7 @@
   "properties": {
     "initial_closed_coils": {
       "type": "integer",
-      "description": "Spire chiuse all'inizio",
+      "description": "Spire **chiuse** (passo ≈ 0) all’inizio (**lato A**). Cerca note tipo ‘closed/ground end’, tratteggio ad aderenza, simbolo passo nullo.",
       "minimum": 0
     }
   },

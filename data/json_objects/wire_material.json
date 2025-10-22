@@ -5,7 +5,7 @@
   "properties": {
     "wire_material": {
       "type": "string",
-      "description": "Materiale del filo (acciaio inox, cromo-silicio, armonico)",
+      "description": "Materiale del filo. Normalizza sinonimi comuni:\n - stainless_steel ← AISI 302/304/316, EN 10270-3 (NS), X10CrNi…\n - chrome_silicon_steel ← CrSi, Si-Cr, EN 10270-2, ASTM A401\n - music_wire_steel ← music wire, EN 10270-1 (SH/DM), ASTM A228\nSe assente/ambiguo → null.",
       "enum": [
         "stainless_steel",
         "chrome_silicon_steel",
