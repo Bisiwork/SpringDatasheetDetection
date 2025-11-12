@@ -5,7 +5,7 @@
   "properties": {
     "total_coils": {
       "type": "number",
-      "description": "Numero **totale** di spire **Na** (incluse **spire chiuse** e porzioni di spira). Accetta frazioni (es. 7.5). Se il disegno indica ‘closed & ground’, le spire chiuse contano nel totale.",
+      "description": "Numero totale di spire Na (incluse spire chiuse e porzioni di spira).\nAccetta frazioni fino al secondo decimale (es. 7.25).\nSe il disegno indica “closed & ground”, le spire chiuse contano nel totale.",
       "minimum": 0
     }
   },

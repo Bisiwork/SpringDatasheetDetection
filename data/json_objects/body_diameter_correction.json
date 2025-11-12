@@ -5,7 +5,7 @@
   "properties": {
     "body_diameter_correction": {
       "type": "number",
-      "description": "Correzione **ΔD** applicata al diametro corpo per compensazioni di processo (es. rilassamento, grinding). Positiva se il corpo risultante è più grande, negativa se più piccolo. Lascia 0/null se non specificato.",
+      "description": "Correzione ΔD applicata al diametro corpo per compensazioni di processo (es. rilassamento, grinding).\nPositiva se il corpo risultante è più grande, negativa se più piccolo.\nSul disegno è raramente indicata ma in pratica si applica quasi sempre.\nPer abilitare la casella dedicata nel programma, inserire sempre un valore minimo: 0.01 (se non diversamente specificato).",
       "minimum": 0
     }
   },

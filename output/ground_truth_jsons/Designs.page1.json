@@ -1,0 +1,13 @@
+{
+  "body_diameter_correction": 0,
+  "external_diameter": 23.673,
+  "final_closed_coils": 1,
+  "free_length": 55.372,
+  "initial_closed_coils": 1,
+  "pitch_insertion_coils": 0,
+  "pitch_retraction_coils": 0,
+  "spring_function": "compression",
+  "spring_type": "cylindrical",
+  "total_coils": 8.17,
+  "wire_diameter": 5.0
+}

@@ -5,7 +5,7 @@
   "properties": {
     "initial_closed_coils": {
       "type": "integer",
-      "description": "Spire **chiuse** (passo ≈ 0) all’inizio (**lato A**). Cerca note tipo ‘closed/ground end’, tratteggio ad aderenza, simbolo passo nullo.",
+      "description": "Spire chiuse (passo ≈ 0) all’inizio (lato A).\nIndizi: note “closed/ground end”, tratteggio ad aderenza, simbolo di passo nullo.\nValore tipico 1; può essere > 1 (es. 1.5, 2, …). Spesso il disegno riporta Na e working coils: in tal caso le spire chiuse si ottengono per differenza/2.",
       "minimum": 0
     }
   },

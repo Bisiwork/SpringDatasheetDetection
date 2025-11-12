@@ -41,8 +41,8 @@ DEFAULT_MODELS: Sequence[str] = (
 )
 DEFAULT_CATEGORY = "Text tokens - Standard"
 DEFAULT_INPUT_DIR = Path("data/all")
-DEFAULT_OUTPUT_ROOT = Path("results")
-DEFAULT_WORKBOOK_PATH = "reports/spring_datasheet_detection.xlsx"
+DEFAULT_OUTPUT_ROOT = Path("output/exp0/results")
+DEFAULT_WORKBOOK_PATH = "output/exp0/reports/spring_datasheet_detection.xlsx"
 
 # Pipeline configuration constants
 PIPELINE_MODELS = DEFAULT_MODELS
@@ -53,7 +53,7 @@ PIPELINE_OUTPUTS_DIR = None
 PIPELINE_WORKBOOK_PATH = DEFAULT_WORKBOOK_PATH
 PIPELINE_LABELING_MODEL = None
 PIPELINE_STRATEGY = "utopia"
-PIPELINE_FORCE = True
+PIPELINE_FORCE = False
 PIPELINE_SKIP_PRICING = False
 PIPELINE_SKIP_LABELING = False
 PIPELINE_SKIP_REPORT = False
@@ -111,6 +111,7 @@ def generate_labeling_workbook(
     outputs_dir: str | Path | None = None,
     workbook_path: str | None = None,
     fields_priority: Sequence[str] | None = None,
+    ground_truth_dir: str | Path | None = None,
 ) -> Path:
     outputs_dir = outputs_dir or Path("results") / model / "outputs"
     if workbook_path is None:
@@ -135,6 +136,7 @@ def generate_labeling_workbook(
         outputs_dir=outputs_dir,
         workbook_path=workbook_path,
         fields_priority=fields_priority,
+        ground_truth_dir=ground_truth_dir,
     )
     print(f"Workbook creato: {result}")
     return result

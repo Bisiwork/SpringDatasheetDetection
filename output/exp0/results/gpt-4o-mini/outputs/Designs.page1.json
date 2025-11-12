@@ -1,0 +1,13 @@
+{
+  "spring_function": "other",
+  "wire_material": "stainless_steel",
+  "wire_diameter": 0.197,
+  "spring_type": "cylindrical",
+  "usage": {
+    "in_tokens": 37106,
+    "out_tokens": 45,
+    "usd": 0.0056,
+    "eur": 0.0051,
+    "secs": 8.33
+  }
+}

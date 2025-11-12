@@ -1,0 +1,13 @@
+{
+  "spring_function": "torsion",
+  "wire_material": "chrome_silicon_steel",
+  "wire_diameter": 2.8,
+  "spring_type": "custom",
+  "usage": {
+    "in_tokens": 37721,
+    "out_tokens": 44,
+    "usd": 0.0057,
+    "eur": 0.0052,
+    "secs": 3.122
+  }
+}

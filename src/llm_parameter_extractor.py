@@ -123,7 +123,7 @@ def ensure_json_schemas_exist():
         print(f"🔧 Missing JSON schema(s): {', '.join(missing)}. Generating...")
         import subprocess
 
-        script = Path(__file__).resolve().parent / "utilities" / "make_json_templates.py"
+        script = Path(__file__).resolve().parent / "utilities" / "json_schema_generator.py"
         subprocess.run([sys.executable, str(script)], check=True)
         print("✅  JSON schemas generated.")
 
@@ -537,7 +537,8 @@ def log_usage(acc: List[Dict[str, Any]], path: Path, wall_secs: float):
     print(f"🕒  Tempi {path.stem}: API {round(total_secs,2)} s  |  Wall {round(wall_secs,2)} s")
 
 def process_input(path: Path):
-    if OUTPUT_DIR.exists() and not FORCE_REGEN:
+    output_file = OUTPUT_DIR / f"{path.stem}.json"
+    if output_file.exists() and not FORCE_REGEN:
         print(f"⏭️  Skipping {path.name}: output already exists.")
         return
     acc: List[Dict[str, Any]] = []

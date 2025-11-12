@@ -1,0 +1,13 @@
+{
+  "spring_function": "other",
+  "wire_material": "chrome_silicon_steel",
+  "wire_diameter": 2.8,
+  "spring_type": "cylindrical",
+  "usage": {
+    "in_tokens": 1765,
+    "out_tokens": 35,
+    "usd": 0.0048,
+    "eur": 0.0044,
+    "secs": 3.742
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "spring_function": "torsion",
+  "wire_material": "stainless_steel",
+  "wire_diameter": 1.3,
+  "spring_type": "conical",
+  "usage": {
+    "in_tokens": 3094,
+    "out_tokens": 1895,
+    "usd": 0.0009,
+    "eur": 0.0008,
+    "secs": 17.546
+  }
+}

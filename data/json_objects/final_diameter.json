@@ -5,7 +5,7 @@
   "properties": {
     "final_diameter": {
       "type": "number",
-      "description": "Diametro all’estremità **finale** (lato B) in mm; simboli: D2/De_out.\nSpecifica il diametro del corpo in prossimità della fine, non di sedi o flange.",
+      "description": "Diametro all’estremità finale (lato B) in mm; simboli: D2, De_out, D3.\nSpecificare il diametro del corpo in prossimità della fine, non di sedi o flange.\nPuò essere uguale o diverso dal diametro iniziale.",
       "minimum": 0
     }
   },

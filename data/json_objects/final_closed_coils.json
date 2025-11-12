@@ -5,7 +5,7 @@
   "properties": {
     "final_closed_coils": {
       "type": "integer",
-      "description": "Spire **chiuse** (passo ≈ 0) alla fine (**lato B**). Se un solo lato è chiuso, l’altro è 0.",
+      "description": "Spire chiuse (passo ≈ 0) alla fine (lato B).\nSe un solo lato è chiuso, l’altro = 0.",
       "minimum": 0
     }
   },

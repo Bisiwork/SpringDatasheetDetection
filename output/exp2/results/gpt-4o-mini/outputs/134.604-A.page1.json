@@ -1,0 +1,13 @@
+{
+  "spring_function": "torsion",
+  "wire_material": "stainless_steel",
+  "wire_diameter": 7.6,
+  "spring_type": "custom",
+  "usage": {
+    "in_tokens": 37721,
+    "out_tokens": 29,
+    "usd": 0.0057,
+    "eur": 0.0052,
+    "secs": 8.753
+  }
+}

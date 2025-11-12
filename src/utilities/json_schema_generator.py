@@ -22,9 +22,9 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, Dict, Set, Type, get_args, get_origin, Literal
 
-from springs import ENUM_FIELD_MAP, SpringBase
+from spring_models import ENUM_FIELD_MAP, SpringBase
 
-OUT_DIR = Path("data/json_objects")
+OUT_DIR = Path(__file__).parent.parent.parent / "data" / "json_objects"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 

@@ -5,7 +5,7 @@
   "properties": {
     "initial_diameter": {
       "type": "number",
-      "description": "Diametro all’estremità **iniziale** (lato A) in mm; simboli comuni: D1/De_in.\nUsa il diametro del corpo molla in prossimità dell’inizio, non eventuali sedi/accessori.",
+      "description": "Diametro all’estremità iniziale (lato A) in mm; simboli comuni: D1, De_in.\nDeve essere il più piccolo tra i (due o tre) diametri. È quello da cui si parte ad avvolgere in macchina.\nUsare il diametro del corpo molla in prossimità dell’inizio, non sedi/accessori.",
       "minimum": 0
     }
   },

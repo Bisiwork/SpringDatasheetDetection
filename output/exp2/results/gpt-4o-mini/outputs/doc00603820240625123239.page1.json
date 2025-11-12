@@ -1,0 +1,21 @@
+{
+  "spring_function": "compression",
+  "wire_material": "stainless_steel",
+  "wire_diameter": 0.197,
+  "spring_type": "cylindrical",
+  "free_length": 134.5,
+  "total_coils": 13.5,
+  "initial_closed_coils": 2,
+  "final_closed_coils": 1,
+  "pitch_insertion_coils": 1,
+  "pitch_retraction_coils": 0,
+  "external_diameter": 9.07,
+  "body_diameter_correction": 0.01,
+  "usage": {
+    "in_tokens": 78889,
+    "out_tokens": 117,
+    "usd": 0.0118,
+    "eur": 0.0109,
+    "secs": 12.178
+  }
+}

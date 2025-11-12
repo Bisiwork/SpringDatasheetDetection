@@ -5,7 +5,7 @@
   "properties": {
     "spring_type": {
       "type": "string",
-      "description": "Famiglia geometrica (solo se spring_function = compression):\n - cylindrical: De ~ costante lungo l’asse (variazioni ≤ 2–3%).\n - conical: De varia **monotonicamente** (cono o tronco di cono).\n - biconical: restringimento centrale (clessidra) con De_min al centro.\n - custom: profilo non riconducibile ai casi sopra (tabella con quote atipiche).",
+      "description": "Famiglia geometrica (solo se spring_function = compression):\ncylindrical: De ~ costante lungo l’asse (variazioni ≤ 2–3%).\nconical: De varia monotonicamente (cono o tronco di cono).\nbiconical simmetrica: restringimento centrale (clessidra) con De_min al centro oppure bombatura a “botte” con De_max al centro.\nbiconical asimmetrica: tre diametri distinti; D1 iniziale (quello di taglio memorizzato in manuale), D2 centrale (può essere maggiore o minore di D1 e D3), D3 finale diverso da D1 (tipicamente più grande).\ncustom: profilo non riconducibile ai casi precedenti (sezioni miste, raccordi multipli, richieste speciali di avvolgimento).",
       "enum": [
         "cylindrical",
         "conical",

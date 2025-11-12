@@ -20,9 +20,9 @@ from typing import Any, Dict, List, Tuple
 
 import matplotlib.pyplot as plt
 
-RESULTS_DIR = Path("results")
-GT_DIR = Path("ground_truth")
-REPORTS = Path("reports")
+RESULTS_DIR = Path("output/exp1/results")
+GT_DIR = Path("output/ground_truth_jsons")
+REPORTS = Path("output/exp1/reports")
 REPORTS.mkdir(exist_ok=True)
 
 NUM_TOL = 0.1  # tolleranza (mm) per campi numerici

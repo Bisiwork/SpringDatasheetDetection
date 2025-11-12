@@ -1,0 +1,6 @@
+stage,in_tok,out_tok,USD,EUR,secs
+meta,37721,44,0.0057,0.0052,8.84
+common_params,37897,65,0.0057,0.0053,7.669
+cylindrical_params,37273,20,0.0056,0.0052,6.265
+TOTAL,,,,0.0157,22.774
+WALL,,,,,22.791

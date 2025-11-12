@@ -23,9 +23,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # ====== CONFIG ======
-RESULTS_DIR = Path("results")  # es: results/<model>/{outputs,usage}
-GT_DIR = Path("ground_truth")  # es: ground_truth/<file>.json
-REPORTS_DIR = Path("reports")
+RESULTS_DIR = Path("output/exp1/results")  # es: results/<model>/{outputs,usage}
+GT_DIR = Path("output/ground_truth_jsons")  # es: output/ground_truth_jsons/<file>.json
+REPORTS_DIR = Path("output/exp1/reports")
 REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Tolleranze per numerici (mm)

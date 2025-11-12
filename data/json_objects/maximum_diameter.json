@@ -5,7 +5,7 @@
   "properties": {
     "maximum_diameter": {
       "type": "number",
-      "description": "Diametro **massimo** (punta larga) in mm. Cerca ‘Dmax’, ‘large end OD’. Non confondere con diametri di flange o sedi.",
+      "description": "Diametro massimo (punta larga) in mm. Cercare “Dmax”, “large end OD”. Non confondere con diametri di flange o sedi.",
       "minimum": 0
     }
   },

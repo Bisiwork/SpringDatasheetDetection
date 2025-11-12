@@ -5,7 +5,7 @@
   "properties": {
     "wire_diameter": {
       "type": "number",
-      "description": "Diametro del filo **d** in mm. Dove cercare: simbolo ‘d’, ‘wire Ø’, ‘⌀wire’ in tabella.\nSe non riportato, stimare come (De − Di)/2 quando De/Di sono chiaramente definiti.\nNon confondere con **diametro del corpo**. Arrotonda a 0.01 mm.",
+      "description": "Diametro del filo d; può essere espresso in mm oppure in pollici (inches).\nDove cercare: simboli/etichette “d”, “wire Ø”, “⌀wire”, “Ø”, “wire dia” (in tabella o nelle note).\nSe non riportato ma De e Di sono chiaramente definiti → stimare come (De − Di) / 2.\nNon confondere con il diametro del corpo molla.\nArrotondare a 0.01 mm dopo eventuale conversione da pollici (1\" = 25.4 mm).",
       "minimum": 0
     }
   },

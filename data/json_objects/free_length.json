@@ -5,7 +5,7 @@
   "properties": {
     "free_length": {
       "type": "number",
-      "description": "Lunghezza **L0** a molla non caricata, misurata lungo l’asse.\nEscludere eventuali elementi di estremità non elicoidali (ganci, staffe).",
+      "description": "Lunghezza libera L0 a molla non caricata, misurata lungo l’asse. Escludere eventuali elementi di estremità non elicoidali (ganci, staffe).\nNel PG si inserisce la lunghezza libera di molle non molate.\nSe la molla è molata (note “estremità molate”, “closed ends ground”, ecc.), la L0 riportata a disegno va corretta:\nL0_PG = L0_disegno + 1.5 · Ø (Ø = diametro filo).",
       "minimum": 0
     }
   },

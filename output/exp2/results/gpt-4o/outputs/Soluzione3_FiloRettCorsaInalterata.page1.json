@@ -1,0 +1,26 @@
+{
+  "spring_function": "compression",
+  "wire_material": "chrome_silicon_steel",
+  "wire_diameter": 3.3,
+  "spring_type": "biconical",
+  "free_length": 391.7,
+  "total_coils": 15.6,
+  "initial_closed_coils": 2,
+  "final_closed_coils": 2,
+  "pitch_insertion_coils": 1,
+  "pitch_retraction_coils": 1,
+  "initial_diameter": 20.2,
+  "central_diameter": 10.2,
+  "final_diameter": 20.2,
+  "initial_conical_coils": 2,
+  "final_conical_coils": 2,
+  "initial_coils_curvature": 0,
+  "final_coils_curvature": 0,
+  "usage": {
+    "in_tokens": 6298,
+    "out_tokens": 137,
+    "usd": 0.0171,
+    "eur": 0.0158,
+    "secs": 7.762
+  }
+}

@@ -5,7 +5,7 @@
   "properties": {
     "central_diameter": {
       "type": "number",
-      "description": "Diametro **centrale** (zona di minima sezione) in mm; simboli: Dc, Dmin_central.\nÈ la ‘strozzatura’ tipica del profilo biconico.",
+      "description": "Diametro centrale (zona di minima o massima sezione, a seconda che sia clessidra o botte) in mm; simboli: Dc, Dmin_central, Dmax_central.\nÈ la strozzatura/bombatura tipica del profilo biconico; nella pratica, le biconiche sono più spesso a botte che a clessidra.",
       "minimum": 0
     }
   },

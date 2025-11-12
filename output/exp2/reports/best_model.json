@@ -1,0 +1,14 @@
+{
+  "model": "gpt-5-mini",
+  "files": 11,
+  "fields_total": 119,
+  "fields_correct": 83,
+  "accuracy": 0.6974789915966386,
+  "cost_usd": 0.1159,
+  "api_time_secs": 850.113,
+  "wall_time_secs": 850.724,
+  "avg_api_time_per_file": 77.283,
+  "cost_n": 0.049939309866481714,
+  "acc_n": 0.8787878787878788,
+  "dist": 0.13109657889770596
+}

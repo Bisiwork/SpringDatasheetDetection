@@ -5,7 +5,7 @@
   "properties": {
     "pitch_retraction_coils": {
       "type": "number",
-      "description": "Numero di spire con **passo decrescente** (zona di retrazione). Identifica porzioni dove la distanza tra spire diminuisce; accetta frazioni.",
+      "description": "Numero di spire con passo decrescente (zona di retrazione).\nIdentificare porzioni dove la distanza tra spire diminuisce progressivamente; ammesse frazioni.",
       "minimum": 0
     }
   },

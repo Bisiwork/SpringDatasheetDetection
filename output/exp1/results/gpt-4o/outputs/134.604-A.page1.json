@@ -1,0 +1,13 @@
+{
+  "spring_function": "torsion",
+  "wire_material": "stainless_steel",
+  "wire_diameter": 1.3,
+  "spring_type": "cylindrical",
+  "usage": {
+    "in_tokens": 1765,
+    "out_tokens": 33,
+    "usd": 0.0047,
+    "eur": 0.0044,
+    "secs": 5.72
+  }
+}

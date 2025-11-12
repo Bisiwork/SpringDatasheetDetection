@@ -1,0 +1,21 @@
+{
+  "spring_function": "compression",
+  "wire_material": "chrome_silicon_steel",
+  "wire_diameter": 2.8,
+  "spring_type": "cylindrical",
+  "free_length": 286.5,
+  "total_coils": 16,
+  "initial_closed_coils": 1,
+  "final_closed_coils": 1,
+  "pitch_insertion_coils": 0.6,
+  "pitch_retraction_coils": 9,
+  "external_diameter": 33.7,
+  "body_diameter_correction": 27.5,
+  "usage": {
+    "in_tokens": 4049,
+    "out_tokens": 104,
+    "usd": 0.0112,
+    "eur": 0.0103,
+    "secs": 6.584
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "spring_function": "compression",
+  "wire_material": "music_wire_steel",
+  "wire_diameter": 2.8,
+  "spring_type": "conical",
+  "free_length": 44.4,
+  "total_coils": 6,
+  "initial_closed_coils": 1,
+  "final_closed_coils": 1,
+  "pitch_insertion_coils": 2,
+  "pitch_retraction_coils": 2,
+  "minimum_diameter": 35.91,
+  "maximum_diameter": 45.85,
+  "concavity_convexity": 0.217,
+  "usage": {
+    "in_tokens": 6068,
+    "out_tokens": 2113,
+    "usd": 0.005,
+    "eur": 0.0046,
+    "secs": 30.753
+  }
+}

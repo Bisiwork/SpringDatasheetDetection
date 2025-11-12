@@ -1,0 +1,21 @@
+{
+  "spring_function": "compression",
+  "wire_material": "music_wire_steel",
+  "wire_diameter": 0.16,
+  "spring_type": "cylindrical",
+  "free_length": 160.0,
+  "total_coils": 25,
+  "initial_closed_coils": 6,
+  "final_closed_coils": 6,
+  "pitch_insertion_coils": 13,
+  "pitch_retraction_coils": 12,
+  "external_diameter": 2.34,
+  "body_diameter_correction": 0.06,
+  "usage": {
+    "in_tokens": 111239,
+    "out_tokens": 128,
+    "usd": 0.0168,
+    "eur": 0.0154,
+    "secs": 10.639
+  }
+}

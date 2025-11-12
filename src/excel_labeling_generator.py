@@ -81,12 +81,25 @@ def _safe_sheet_name(name: str) -> str:
 
 
 def build_labeling_workbook(
-    input_dir: Path | str = "data/sketch",
-    outputs_dir: Path | str = "results/<MODEL>/outputs",
-    workbook_path: Path | str = "reports/<MODEL>_labeling.xlsx",
+    input_dir: Path | str = "data/all",
+    outputs_dir: Path | str = "output/exp1/results/<MODEL>/outputs",
+    workbook_path: Path | str = "output/exp1/reports/<MODEL>_labeling.xlsx",
     *,
     fields_priority: Sequence[str] | None = None,
+    ground_truth_dir: Path | str | None = None,
 ):
+    # Mapping from input stem to ground truth stem
+    gt_stem_mapping = {
+        'Fertigungsversuch 0.18mm Simplex MX5.page1': 'Fertigungsversuch 0.18mm Simple',
+        'Soluzione2_FiloRettBlocco46,4.page1': 'Soluzione2_FiloRettBlocco46,4.p',
+        'Soluzione3_FiloRettCorsaInalterata.page1': 'Soluzione3_FiloRettCorsaInalter',
+        'Spring 2 - wire diameter 0,23.page1': 'Spring 2 - wire diameter 0,23.p',
+        'Spring 1 - wire diameter 0,20.page1': 'Spring 1 - wire diameter 0,20.p',
+        'P294090_B_38-12_Tri_Wedge_Installation_Spring.page1': 'P294090_B_38-12_Tri_Wedge_Insta',
+        'Fertigungsversuch 0.16mm Simplex MX5.page1': 'Fertigungsversuch 0.16mm Simple',
+        '34083594A - A0033C2168.cgm.page1': '34083594A - A0033C2168.cgm.page',
+        'Zeicunungen vom Baldim[2].page1': 'Zeicunungen vom Baldim_2_.page1',
+    }
     """
     Per ogni file in input_dir, crea un foglio:
       A: 'parameter'
@@ -100,6 +113,7 @@ def build_labeling_workbook(
     outputs_dir = Path(outputs_dir)
     workbook_path = Path(workbook_path)
     workbook_path.parent.mkdir(parents=True, exist_ok=True)
+    ground_truth_dir = Path(ground_truth_dir) if ground_truth_dir else None
 
     wb = Workbook()
     ws0 = wb.active
@@ -114,9 +128,21 @@ def build_labeling_workbook(
         stem = f.stem
         pred_path = outputs_dir / f"{stem}.json"
         preds = _load_json(pred_path) if pred_path.exists() else {}
+        # If not found, try with .page1.json
+        if not preds:
+            pred_path_page1 = outputs_dir / f"{stem}.page1.json"
+            preds = _load_json(pred_path_page1) if pred_path_page1.exists() else {}
         # Remove debugTrail and usage as they're not needed for labeling
         preds.pop('debugTrail', None)
         preds.pop('usage', None)
+
+        # Load ground truth if available
+        gt = {}
+        if ground_truth_dir:
+            gt_stem = gt_stem_mapping.get(stem, stem)
+            gt_path = ground_truth_dir / f"{gt_stem}.json"
+            if gt_path.exists():
+                gt = _load_json(gt_path)
 
         keys = list(preds.keys())
         if fields_priority:
@@ -130,7 +156,7 @@ def build_labeling_workbook(
         headers = ["parameter", "predicted", "ground_truth"]
         ws.append(headers)
         for k in keys:
-            ws.append([k, preds.get(k, ""), ""])
+            ws.append([k, preds.get(k, ""), gt.get(k, "")])
 
         # Style headers
         for col in range(1, 4):

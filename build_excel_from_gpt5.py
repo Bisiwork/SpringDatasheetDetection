@@ -12,12 +12,12 @@ ROOT_DIR = Path(__file__).resolve().parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-from src.main import generate_labeling_workbook
+from src.pipeline_orchestrator import generate_labeling_workbook
 
 def main():
     model = "gpt-5"
     input_dir = Path("data/all")
-    outputs_dir = Path("results") / model / "outputs"
+    outputs_dir = Path("output/exp1/results") / model / "outputs"
 
     if not outputs_dir.exists():
         print(f"Directory outputs non trovata: {outputs_dir}")
@@ -28,6 +28,8 @@ def main():
         model=model,
         input_dir=input_dir,
         outputs_dir=outputs_dir,
+        workbook_path="src/spring_datasheet_detection.xlsx",
+        ground_truth_dir="output/ground_truth_jsons",
     )
 
     print(f"Report Excel creato: {workbook_path}")

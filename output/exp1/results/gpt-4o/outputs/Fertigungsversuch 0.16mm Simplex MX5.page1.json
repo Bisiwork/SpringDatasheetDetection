@@ -1,0 +1,15 @@
+{
+  "spring_function": "compression",
+  "wire_material": "stainless_steel",
+  "wire_diameter": 0.16,
+  "spring_type": "cylindrical",
+  "external_diameter": 2.34,
+  "body_diameter_correction": 0,
+  "usage": {
+    "in_tokens": 5053,
+    "out_tokens": 65,
+    "usd": 0.0133,
+    "eur": 0.0123,
+    "secs": 13.071
+  }
+}

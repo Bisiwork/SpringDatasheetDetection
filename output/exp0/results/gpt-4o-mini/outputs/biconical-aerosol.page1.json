@@ -1,0 +1,13 @@
+{
+  "spring_function": "other",
+  "wire_material": "chrome_silicon_steel",
+  "wire_diameter": 0.52,
+  "spring_type": "biconical",
+  "usage": {
+    "in_tokens": 25772,
+    "out_tokens": 34,
+    "usd": 0.0039,
+    "eur": 0.0036,
+    "secs": 5.536
+  }
+}
